@@ -159,7 +159,7 @@ class ResettingController extends Controller
         $user = $this->userManager->findUserByConfirmationToken($token);
 
         if (null === $user) {
-            return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login'));
+            return new RedirectResponse($this->container->get('router')->generate('token_not_valid'));
         }
 
         $event = new GetResponseUserEvent($user, $request);
